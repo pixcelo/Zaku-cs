@@ -15,6 +15,9 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        var client = new FetchService();
+        client.GetSymbolInfo();
+
         return View();
     }
 
