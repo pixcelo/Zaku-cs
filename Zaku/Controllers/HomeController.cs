@@ -7,6 +7,7 @@ namespace Zaku.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly FetchService _fetchService = new FetchService();
 
     public HomeController(ILogger<HomeController> logger)
     {
@@ -15,15 +16,18 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        var client = new FetchService();
-        client.GetSymbolInfo();
-
-        return View();
+        var list = _fetchService.GetSymbolInfo();
+        return View(list);
     }
 
     public IActionResult Privacy()
     {
         return View();
+    }
+
+    public void SetViewData()
+    {
+        ViewData["symbolData"] = _fetchService.GetSymbolInfo();
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
