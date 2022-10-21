@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Zaku.Models;
 
 namespace Zaku.Controllers;
@@ -16,8 +17,8 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        var list = _fetchService.GetSymbolInfo();
-        return View(list);
+        SetViewData();
+        return View();
     }
 
     public IActionResult Privacy()
@@ -27,7 +28,7 @@ public class HomeController : Controller
 
     public void SetViewData()
     {
-        ViewData["symbolData"] = _fetchService.GetSymbolInfo();
+        ViewData["symbols"] = JsonConvert.SerializeObject( _fetchService.GetSymbols());
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

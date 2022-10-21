@@ -25,7 +25,15 @@ namespace Zaku
             });
         }
 
-        public async Task<List<BybitSymbol>> GetSymbolInfo()
+        public List<BybitSymbol> GetSymbols()
+        {
+            var task = GetSymbolsAsync();
+            task.Wait();
+
+            return task.Result;
+        }
+
+        public async Task<List<BybitSymbol>> GetSymbolsAsync()
         {
             // Getting info on all symbols
             var symbolData = await _bybitClient.UsdPerpetualApi.ExchangeData.GetSymbolsAsync();
@@ -33,6 +41,8 @@ namespace Zaku
 
             return list;
         }
+
+
     }
 
 }
