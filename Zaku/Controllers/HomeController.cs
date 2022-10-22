@@ -28,7 +28,8 @@ public class HomeController : Controller
 
     public void SetViewData()
     {
-        ViewData["symbols"] = JsonConvert.SerializeObject( _fetchService.GetSymbols());
+        ViewData["symbols"] = JsonConvert.SerializeObject(_fetchService.GetSymbols());
+        ViewData["ohlc"] = JsonConvert.SerializeObject(_fetchService.GetOhlc());
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

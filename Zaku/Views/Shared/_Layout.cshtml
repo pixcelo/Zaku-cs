@@ -45,10 +45,12 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script>
-        const viewData = '@Html.Raw(ViewData["symbols"])';
-        const symbols = JSON.parse(viewData);
+        //const tmpSymbols = '@Html.Raw(ViewData["symbols"])';
+        //const symbols = JSON.parse(tmpSymbols);
 
-        console.log('test');
+        const tmpOhlc = @Html.Raw(ViewData["ohlc"]);
+        const ohlc = JSON.parse(tmpOhlc);
+        console.log(ohlc);
     </script>
 
     @await RenderSectionAsync("Scripts", required: false)
