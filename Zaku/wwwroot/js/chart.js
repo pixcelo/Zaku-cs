@@ -1,5 +1,7 @@
 //const symbols = JSON.parse(tmpSymbols);
 const ohlc = JSON.parse(tmpOhlc);
+
+// https://docs.cryptowat.ch/rest-api/markets/ohlc
 console.log('1min ', ohlc.result[60]);
 
 // https://www.amcharts.com/demos/candlestick-chart/
@@ -13,7 +15,6 @@ am5.ready(function() {
         for (let i = 0; i < candles.length; i++) {
             const candle = candles[i];
             chartData.push({
-                //date: new Date(candle[0]).getTime(),
                 date: candle[0],
                 value: candle[4],
                 open: candle[1],
@@ -24,34 +25,6 @@ am5.ready(function() {
         return chartData;
     }
 
-    function generateChartData2() {
-        const chartData = [];
-        const firstDate = new Date();
-        firstDate.setDate(firstDate.getDate() - 1000);
-        firstDate.setHours(0, 0, 0, 0);
-        let value = 1200;
-
-        for (let i = 0; i < 5000; i++) {
-            const newDate = new Date(firstDate);
-            newDate.setDate(newDate.getDate() + i);
-
-            value += Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
-            const open = value + Math.round(Math.random() * 16 - 8);
-            const low = Math.min(value, open) - Math.round(Math.random() * 5);
-            const high = Math.max(value, open) + Math.round(Math.random() * 5);
-
-            chartData.push({
-                date: newDate.getTime(),
-                value: value,
-                open: open,
-                low: low,
-                high: high
-            });
-        }
-        return chartData;
-    }
-
-    const _data = generateChartData2();
     const data = generateChartData(ohlc.result[60]);
 
     const chart = root.container.children.push(
