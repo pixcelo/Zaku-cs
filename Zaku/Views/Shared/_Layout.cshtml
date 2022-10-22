@@ -43,7 +43,12 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script defer src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- amcharts5 -->
+    <script src="~/lib/amcharts5/index.js"></script>
+    <script src="~/lib/amcharts5/xy.js"></script>
+    <script src="~/lib/amcharts5/themes/Animated.js"></script>
+    <script defer src="~/js/chart.js"></script>
     <script>
         const tmpSymbols = '@Html.Raw(ViewData["symbols"])';
         const tmpOhlc = @Html.Raw(ViewData["ohlc"]);

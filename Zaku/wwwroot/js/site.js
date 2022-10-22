@@ -2,6 +2,3 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-//const symbols = JSON.parse(tmpSymbols);
-const ohlc = JSON.parse(tmpOhlc);
-console.log(ohlc);
