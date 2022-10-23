@@ -146,4 +146,26 @@ am5.ready(function() {
     series.appear(1000);
     chart.appear(1000, 100);
 
+    // toolbar
+    const toolbar = am5stock.StockToolbar.new(root, {
+        container: document.getElementById('chartcontrols'),
+        stockChart: chart,
+        controls: [
+            am5stock.DrawingControl.new(root, {
+                stockChart: stockChart
+            }),
+            am5stock.ResetControl.new(root, {
+                stockChart: stockChart
+            }),
+            am5stock.SettingsControl.new(root, {
+                stockChart: stockChart
+            })
+        ]
+    });
+
+    // Events
+    series.columns.template.events.on('click', function(ev) {
+        console.log('Clicked on a column', ev.target);
+    });
+
 });
