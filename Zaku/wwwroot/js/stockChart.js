@@ -118,12 +118,13 @@ function generateChartData(candles) {
 const data = generateChartData(ohlc.result[60]);
 valueSeries.data.setAll(data);
 
+// https://www.amcharts.com/docs/v5/reference/drawingcontrol/#Settings
 const toolbar = am5stock.StockToolbar.new(root, {
     container: document.getElementById('chartcontrols'),
     stockChart: stockChart,
     controls: [
         am5stock.DrawingControl.new(root, {
-            stockChart: stockChart
+            stockChart: stockChart,
         }),
         am5stock.ResetControl.new(root, {
             stockChart: stockChart
